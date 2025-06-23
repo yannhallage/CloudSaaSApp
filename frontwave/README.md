@@ -142,7 +142,7 @@ cd frontwave
 Installer les dépendances :
 npm install
 
-Lancer le serveur de développement :
+Lancer le serveur de développement :::::
 npm run dev
 
 ⚙️ Configure .env.local avec les bonnes variables MongoDB, ports, etc.
