@@ -1,0 +1,53 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# OS / IDE / System
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Dependencies
+frontWave/node_modules/
+serverWave/node_modules/
+
+# Builds
+frontWave/build/
+frontWave/dist/
+serverWave/build/
+serverWave/dist/
+
+# Environment files (NEVER commit these!)
+frontWave/.env
+frontWave/.env.*
+serverWave/.env
+serverWave/.env.*
+
+# Docker
+.docker/
+docker-compose.override.yml
+*.tar
+
+# Coverage / tests
+coverage/
+*.lcov
+
+# SSH / Keys / Secrets
+*.pem
+*.key
+*.crt
+
+# Archive / package artifacts
+*.tgz
+*.zip
