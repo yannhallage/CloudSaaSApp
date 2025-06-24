@@ -5,15 +5,6 @@ import { DonneesInscription } from "./context/authContext";
 import TransactionRecents from "./myComponents/transactionRecents";
 
 const App = () => {
-  // mail
-  // nom 
-  // prenom
-  // ville
-  // telephone
-  // motdepasse
-
-  // autres 
-  // mais pas maintenant
 
   const [email_personne, setEmail_personne] = useState('')
   const [nom_personne, setNom_personne] = useState('')
