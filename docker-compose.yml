@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./serverwave
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./serverwave/.env
+
+  frontend:
+    build: ./frontwave
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
