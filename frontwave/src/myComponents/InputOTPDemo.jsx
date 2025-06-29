@@ -20,7 +20,7 @@ export function InputOTPDemo({ onChange }) {
         setValeur(value);
 
         try {
-            const response = await axios.post('http://backend:3000/api/wavewallet/authentification/otp', {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/wavewallet/authentification/otp`, {
                 numeroTel: numeroOTP,
                 codeOTP: value
             });
