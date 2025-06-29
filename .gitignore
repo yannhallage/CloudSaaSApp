@@ -51,3 +51,6 @@ coverage/
 # Archive / package artifacts
 *.tgz
 *.zip
+
+#password
+cloudsaasapp.pem
