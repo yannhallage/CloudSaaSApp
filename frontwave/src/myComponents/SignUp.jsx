@@ -37,7 +37,7 @@ const SignUp = () => {
     }
 
     const EnvoieDonneesBack = () => {
-        axios.post(`http://backend:3000/api/wavewallet/authentification`, {
+        axios.post(`${import.meta.env.VITE_API_URL}/api/wavewallet/authentification`, {
             numeroTel: numero,
             motdepasse: password
         })
