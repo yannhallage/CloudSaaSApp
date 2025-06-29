@@ -7,6 +7,15 @@ RUN npm install --legacy-peer-deps
 
 COPY . .
 
+# Construction du projet Vite avec l'URL backend à injecter
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
+RUN npm run build
+
+# Installer vite en global pour servir le build
+RUN npm install -g vite
+
 EXPOSE 5173
 
-CMD ["npm", "run", "dev"]
+CMD ["vite", "preview", "--host"]
