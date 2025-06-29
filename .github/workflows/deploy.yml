@@ -58,7 +58,7 @@ jobs:
 
       - name: Build backend image
         run: |
-          docker build -t thisyannhallage/cloudsaasapp-server:latest ./serverwave
+          docker build -t thisyannhallage/cloudsaasapp-server:latest ./serverWave
           docker push thisyannhallage/cloudsaasapp-server:latest
 
       - name: Build frontend image
