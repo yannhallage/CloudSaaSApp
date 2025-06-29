@@ -8,7 +8,7 @@ const cors = require('cors')
 
 // autorisation du client avec cors
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ' 0.0.0.0',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
