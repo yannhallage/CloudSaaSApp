@@ -61,9 +61,11 @@ jobs:
           docker build -t thisyannhallage/cloudsaasapp-server:latest ./serverWave
           docker push thisyannhallage/cloudsaasapp-server:latest
 
-      - name: Build frontend image
+      - name: Build frontend image with VITE_API_URL
         run: |
-          docker build -t thisyannhallage/cloudsaasapp-front:latest ./frontwave
+          docker build \
+            --build-arg VITE_API_URL=http://13.60.31.86:3000 \
+            -t thisyannhallage/cloudsaasapp-front:latest ./frontwave
           docker push thisyannhallage/cloudsaasapp-front:latest
 
   deploy:
@@ -78,7 +80,7 @@ jobs:
 
       - name: Deploy on EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_PUBLIC_IP }} << EOF
+          ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
             cd /home/ec2-user/CloudSaaSApp
             docker-compose pull
             docker-compose up -d
