@@ -37,7 +37,7 @@ const SignUp = () => {
     }
 
     const EnvoieDonneesBack = () => {
-        axios.post(`http://localhost:3000/api/wavewallet/authentification`, {
+        axios.post(`http://backend:3000/api/wavewallet/authentification`, {
             numeroTel: numero,
             motdepasse: password
         })

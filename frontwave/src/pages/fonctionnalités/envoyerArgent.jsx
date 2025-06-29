@@ -40,7 +40,7 @@ const EnvoyerArgent = () => {
       const now = new Date();
       const dateTransaction = now.toLocaleString();
 
-      await axios.post("http://localhost:3000/api/wavewallet/myaccount/transactions", {
+      await axios.post("http://backend:3000/api/wavewallet/myaccount/transactions", {
         numero_expediteur: telephone_personne,
         numero_destinataire: telephoneDestinataire,
         type_transaction: "envoi",
