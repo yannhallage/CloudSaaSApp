@@ -9,4 +9,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
+  server: {
+    host: "0.0.0.0",  // écoute sur toutes les interfaces réseau (important pour Docker)
+    port: 4173,       // même port que celui exposé par Docker
+  },
 });
