@@ -11,6 +11,6 @@ services:
   frontend:
     image: thisyannhallage/cloudsaasapp-front:latest
     ports:
-      - "5173:5173"
+      - "4173:4173"
     depends_on:
       - backend
