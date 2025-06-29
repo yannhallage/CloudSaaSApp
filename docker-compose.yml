@@ -2,14 +2,14 @@ version: '3.8'
 
 services:
   backend:
-    image: cloudsaasapp-serverlatest
+    image: thisyannhallage/cloudsaasapp-server:latest
     ports:
       - "3000:3000"
     env_file:
       - ./serverwave/.env
 
   frontend:
-    image: cloudsaasapp-front:latest
+    image: thisyannhallage/cloudsaasapp-front:latest
     ports:
       - "5173:5173"
     depends_on:
