@@ -16,6 +16,6 @@ RUN npm run build
 # Installer vite en global pour servir le build (en mode preview prod)
 RUN npm install -g vite
 
-EXPOSE 4173
+EXPOSE 5173
 
 CMD ["npm", "run", "dev"]
