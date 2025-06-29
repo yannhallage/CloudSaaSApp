@@ -11,10 +11,14 @@ const PORT = process.env.PORT || 3000;
 connectDB().then(() => {
     const serverHttp = http.createServer(app);
 
-    serverHttp.listen(PORT, () => {
-        console.log(`Le serveur est lancé sur le port : ${PORT}`);
-    });
+    serverHttp.listen(PORT, '0.0.0.0', () => {
+    console.log(`Le serveur est lancé sur le port : ${PORT}`);
+});
+
 
 }).catch(error => {
     console.error("Erreur de connexion à MongoDB :", error);
 });
+
+
+//just an tst
