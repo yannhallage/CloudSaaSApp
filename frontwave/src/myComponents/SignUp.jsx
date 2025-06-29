@@ -37,26 +37,33 @@ const SignUp = () => {
     }
 
     const EnvoieDonneesBack = () => {
-        axios.post(`http://backend:3000/api/wavewallet/authentification`, {
+        setIsLoading(true);
+
+        axios.post(`${import.meta.env.VITE_API_URL}/api/wavewallet/authentification`, {
             numeroTel: numero,
             motdepasse: password
         })
             .then((response) => {
-                toast.success(response.data.message);
-                setShowPassword(true);
                 setTimeout(() => {
-                    navigate('/verification')
-                    setNumeroOTP(numero)
-                }, 800)
+                    toast.success(response.data.message);
+                    toast.success(`le code est : ${response.data.codeOTP}`);
+                }, 1000);
+
+                setShowPassword(true);
+
+                setTimeout(() => {
+                    navigate('/verification');
+                    setNumeroOTP(numero);
+                }, 3000);
             })
             .catch((error) => {
                 const errorMessage = error?.response?.data?.message || "Une erreur est survenue.";
                 toast.error(errorMessage);
             })
             .finally(() => {
-                setIsLoading(false); // toujours arrêter le loader à la fin
+                setIsLoading(false);
             });
-    }
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#f5f5f5] px-4">
