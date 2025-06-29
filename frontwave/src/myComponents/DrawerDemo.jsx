@@ -78,7 +78,7 @@ export function DrawerDemo({ tester }) {
                     <DrawerHeader>
                         <DrawerTitle>Connexion avec un code à usage unique</DrawerTitle>
                         <DrawerDescription>
-                            Code envoyé a votre numéro.
+                            Code otp envoyé : {codeOTP_}.
                         </DrawerDescription>
                     </DrawerHeader>
 

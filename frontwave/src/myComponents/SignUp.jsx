@@ -1,17 +1,16 @@
 import { motion } from "framer-motion"
-import toast, { Toaster } from 'react-hot-toast';
-import axios from "axios";
+import toast, { Toaster } from 'react-hot-toast'
+import axios from "axios"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useContext, useState } from "react"
 import { RotatingLines } from "react-loader-spinner"
 import { useNavigate } from "react-router-dom"
-import { DonneesInscription } from "../context/authContext";
-
+import { DonneesInscription } from "../context/authContext"
 
 const SignUp = () => {
     const navigate = useNavigate()
-    const { numeroOTP, setNumeroOTP } = useContext(DonneesInscription)
+    const { setNumeroOTP } = useContext(DonneesInscription)
     const [showPassword, setShowPassword] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [textForButton, setTextForButton] = useState('Suivant')
@@ -19,43 +18,42 @@ const SignUp = () => {
     const [numero, setNumero] = useState('')
     const [password, setPassword] = useState('')
 
-
-    const notify = (justAnText) => toast.error(justAnText)
+    const notify = (message) => toast.error(message)
 
     const handleClick = () => {
-        setIsLoading(true)
-        VerificationDesChamps();
-    }
-
-    const VerificationDesChamps = () => {
         if (numero.trim() === '' || password.trim() === '') {
-            notify('Veuillez remplir tous les champs');
-            setIsLoading(false); // on arrête le loader si les champs sont vides
-        } else {
-            EnvoieDonneesBack();
+            notify('Veuillez remplir tous les champs')
+            return
         }
+
+        setIsLoading(true)
+        EnvoieDonneesBack()
     }
 
-    const EnvoieDonneesBack = () => {
-        axios.post(`${import.meta.env.VITE_API_URL}/api/wavewallet/authentification`, {
-            numeroTel: numero,
-            motdepasse: password
-        })
-            .then((response) => {
-                toast.success(response.data.message);
-                setShowPassword(true);
-                setTimeout(() => {
-                    navigate('/verification')
-                    setNumeroOTP(numero)
-                }, 800)
+    const EnvoieDonneesBack = async () => {
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/wavewallet/authentification`, {
+                numeroTel: numero,
+                motdepasse: password
             })
-            .catch((error) => {
-                const errorMessage = error?.response?.data?.message || "Une erreur est survenue.";
-                toast.error(errorMessage);
-            })
-            .finally(() => {
-                setIsLoading(false); // toujours arrêter le loader à la fin
-            });
+
+            // Affichage du message et du code OTP
+            toast.success(response.data.message)
+            toast.success(`Le code est : ${response.data.codeOTP}`)
+
+            setNumeroOTP(numero)
+            setShowPassword(true)
+
+            // Attendre avant de rediriger pour que l'utilisateur voie les toasts
+            setTimeout(() => {
+                navigate('/verification')
+            }, 3000)
+        } catch (error) {
+            const errorMessage = error?.response?.data?.message || "Une erreur est survenue."
+            toast.error(errorMessage)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     return (
@@ -71,7 +69,7 @@ const SignUp = () => {
                 <Input
                     placeholder="Numéro de mobile"
                     className="mb-2"
-                    maxlength={10}
+                    maxLength={10}
                     value={numero}
                     onChange={(e) => setNumero(e.target.value)}
                 />
@@ -128,10 +126,7 @@ const SignUp = () => {
                     </select>
                 </div>
 
-                <Toaster
-                    position="bottom-center"
-                    reverseOrder={false}
-                />
+                <Toaster position="bottom-center" reverseOrder={false} />
             </motion.div>
         </div>
     )
