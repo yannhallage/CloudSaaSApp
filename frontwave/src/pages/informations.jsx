@@ -30,7 +30,7 @@ const Informations = () => {
             if (motDePasse === motDePasseConfirm) {
                 let sold = 0;
                 // inscriptionDefinitive
-                axios.post(`http://localhost:3000/api/wavewallet/inscription/definitive`, {
+                axios.post(`http://backend:3000/api/wavewallet/inscription/definitive`, {
 
                     numeroTel: telephone_personne,
                     name: nom,
