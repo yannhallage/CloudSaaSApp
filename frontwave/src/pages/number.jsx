@@ -59,7 +59,7 @@ const NumberPhone = () => {
     // }
 
     const SendingDonnee = (donneesInscription) => {
-        axios.post(`http://backend:3000/api/wavewallet/inscription/definitive/numero`, {
+        axios.post(`${import.meta.env.VITE_API_URL}/api/wavewallet/inscription/definitive/numero`, {
             numeroTel: donneesInscription
         }, {
             headers: {
