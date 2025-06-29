@@ -6,7 +6,7 @@ const route_myaccount = require('./routes/myaccountwave.route')
 
 const cors = require('cors')
 
-// autorisation du client avec cors
+// autorisation du client avec corsssssss
 app.use(cors({
     origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
