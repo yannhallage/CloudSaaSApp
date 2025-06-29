@@ -13,9 +13,9 @@ ENV VITE_API_URL=$VITE_API_URL
 
 RUN npm run build
 
-# Installer vite en global pour servir le build
+# Installer vite en global pour servir le build (en mode preview prod)
 RUN npm install -g vite
 
-EXPOSE 5173
+EXPOSE 4173
 
-CMD ["vite", "preview", "--host"]
+CMD ["npm", "run", "dev"]
