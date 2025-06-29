@@ -240,9 +240,10 @@ const MyAccount = () => {
                                 </div>
                             </motion.div>
 
-                            <div className="mt-5 space-y-4 ">
-                                <div className="font-semibold  text-gray-800">Effectuer</div>
-                                <div className="flex space-x-3">
+                            <div className="mt-5 space-y-4">
+                                <div className="font-semibold text-gray-800">Effectuer</div>
+                                
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                                     <NavButtons
                                         icon={icon_one}
                                         label={"Accueil"}
@@ -277,6 +278,3 @@ const MyAccount = () => {
     )
 }
 export default MyAccount;
-
-
-
