@@ -168,7 +168,7 @@ const MethodPaymentAgree = ({ telephone_ }) => {
                                 setTimeout(() => {
                                     setButtonchange("Se recharger")
                                     console.log(montant, telephone_)
-                                    axios.put(`http://localhost:3000/api/wavewallet/myaccount/Erecharge`, {
+                                    axios.put(`http://backend:3000/api/wavewallet/myaccount/Erecharge`, {
                                         numeroTel: telephone_,
                                         montant: montant
                                     }, {
